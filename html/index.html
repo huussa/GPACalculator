@@ -13,22 +13,23 @@
 </head>
 <body>
     <h1>GPA Calculator</h1>
-    <div class="system-of-grades">
+    <div class="grading-system">
         <h3>System of Grades</h3>
+        <input type="radio" id="gpa4" name="system" value="4" checked>
+        <label for="gpa4">Out of 4</label>
 
-        <select>
-            <option value="4" selected>4</option>
-            <option value="5">5</option>
-        </select>
+        <input type="radio" id="gpa5" name="system" value="5">
+        <label for="gpa5">Out of 5</label>
     </div>
     <div class="subject">
+        <p>subject <span>1</span></p>
         <div class="input-group subject-name">
-            <h3>subject name:</h3>
-            <input type="text" placeholder="Enter subject name">
+            <h3>subject name</h3>
+            <input type="text" name="subject-name" placeholder="Enter subject name">
         </div>
         <div class="input-group hours">
-            <h3>Hours:</h3>
-            <select id="hours" >
+            <h3>Hours</h3>
+            <select name="hours" id="hours" required>
                 <option value="" selected>Choose hours</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
@@ -43,8 +44,8 @@
             </select>
         </div>
         <div class="input-group grade">
-            <h3>Grade:</h3>
-            <select id="grade" >
+            <h3>Grade</h3>
+            <select name="grade" id="grade" required>
                 <option value="" selected>Choose Grade</option>
                 <option value="4.00">A+</option>
                 <option value="3.75">A</option>
@@ -57,16 +58,17 @@
                 <option value="0.00">F</option>
             </select>
         </div>
-        <div class="show-result-btn">
-            <button type="button">Show Result</button>
-        </div>
-        <div class="add-clear">
-            <button type="button">Add Subject</button>
-            <button type="button">Clear</button>
-        </div>
-        <div class="result">
-            <p>GPA: <span id="gpa">0.00</span></p>
-        </div>
+    </div>
+    <div class="action-btns">
+        <button type="button" onclick="addSubject()" id="add-btn"><img src="../images/plus96.png" alt="add icon"></button>
+
+        <button type="button" id="show-btn" onclick="showResult()">Show Result</button>
+
+        <button type="button" id ="delete-btn" onclick="deleteSubject()"><img src="../images/trash96.png" alt="delete icon"></button>
+    </div>
+
+    <div class="result">
+        <p>GPA: <span id="gpa">0.00</span></p>
     </div>
 </body>
 </html>
