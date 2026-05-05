@@ -4,6 +4,7 @@
     box-sizing: border-box;
 }
 html, body {
+    margin-top: 20px;
     width: 100%;
     height: 100%;
 }
@@ -43,14 +44,16 @@ body {
     background-color: #007BFF;
     color: white;
 }
-
+.subjects-container {
+    width: 80%;
+}
 .subject {
     background-color: #fff;
     padding: 20px;
     margin: 20px 0;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    width: 80%;
+    width: 100%;
     display: flex;
     justify-content: space-around;
     gap: 50px;
@@ -68,10 +71,18 @@ body {
 }
 .input-group input, .input-group select {
     width: 100%;
+    height: 50px;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
     padding: 10px;
     margin-top: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
+}
+.input-group input:focus, .input-group select:focus {
+    border-color: #007BFF;
+    outline: none;
 }
 .action-btns {
     display: flex;
@@ -86,7 +97,6 @@ body {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 16px;
     height: 50px;
     font-size: 20px;
     font-weight: bold;
@@ -135,4 +145,5 @@ body {
     text-align: center;
     font-size: 30px;
     font-weight: bold;
+    margin-bottom: 30px;
 }
