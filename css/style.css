@@ -91,6 +91,7 @@ body {
 select, option {
     color: black;
     -webkit-text-fill-color: black;
+    -moz-text-fill-color: black;
 }
 
 .input-group input:focus, .input-group select:focus {
