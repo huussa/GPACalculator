@@ -88,6 +88,11 @@ body {
     border: 1px solid #ccc;
     border-radius: 5px;
 }
+select, option {
+    color: black;
+    -webkit-text-fill-color: black;
+}
+
 .input-group input:focus, .input-group select:focus {
     border-color: #007BFF;
     outline: none;
