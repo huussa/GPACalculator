@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="A simple GPA calculator to help students calculate their Grade Point Average based on their course grades and credit hours.">
     <link rel="stylesheet" href="../css/style.css">
-    <!-- <link rel="stylesheet" href="../css/media.css"> -->
+    <link rel="stylesheet" href="../css/mdia.css">
     <link rel="icon" href="../images/GPACalculator.png" type="image/x-icon">
     <title>GPA Calculator</title>
     <style>
@@ -15,23 +15,23 @@
     <h1>GPA Calculator</h1>
     <div class="grading-system">
         <h3>System of Grades</h3>
-        <input type="radio" id="gpa4" name="system" value="4" checked>
+        <input type="radio" id="gpa4" name="system" value="0" checked>
         <label for="gpa4">Out of 4</label>
 
-        <input type="radio" id="gpa5" name="system" value="5">
+        <input type="radio" id="gpa5" name="system" value="1">
         <label for="gpa5">Out of 5</label>
     </div>
     <div class="subjects-container">
         <div class="subject">
-            <p>subject <span>1</span></p>
-            <div class="input-group subject-name">
+            <p>subject <span class="number-of-subjects">1</span></p>
+            <div class="input-group">
                 <h3>subject name</h3>
                 <input type="text" name="subject-name" placeholder="Enter subject name">
             </div>
-            <div class="input-group hours">
+            <div class="input-group">
                 <h3>Hours</h3>
-                <select name="hours" id="hours" required>
-                    <option value="" selected>Choose hours</option>
+                <select name="hours" class="hours" required>
+                    <option value="" selected disabled hidden>Choose hours</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -44,10 +44,10 @@
                     <option value="10">10</option>
                 </select>
             </div>
-            <div class="input-group grade">
+            <div class="input-group">
                 <h3>Grade</h3>
-                <select name="grade" id="grade" required>
-                    <option value="" selected>Choose Grade</option>
+                <select name="grade" class="grade" required>
+                    <option value="" selected disabled hidden>Choose Grade</option>
                     <option value="4.00">A+</option>
                     <option value="3.75">A</option>
                     <option value="3.50">B+</option>
