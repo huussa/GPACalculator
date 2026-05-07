@@ -32,6 +32,7 @@ body {
     background-color: #eee;
     cursor: pointer;
     margin: 5px;
+    font-weight: bold;
     transition: 0.3s;
 }
 

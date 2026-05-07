@@ -1,8 +1,13 @@
 loadSubjects();
 
 document.addEventListener("input", saveSubjects);
+document.addEventListener("change", saveSubjects);
 
-function subject(subjectName = "", counter = 1){
+function subject(
+    subjectName = "",
+    subjectHours = "",
+    counter = 1
+){
 
     return `
         <p>
@@ -11,6 +16,7 @@ function subject(subjectName = "", counter = 1){
         </p>
 
         <div class="input-group subject-name">
+
             <h3>subject name</h3>
 
             <input 
@@ -22,24 +28,64 @@ function subject(subjectName = "", counter = 1){
         </div>
 
         <div class="input-group">
+
             <h3>Hours</h3>
 
             <select name="hours" class="hours" required>
 
-                <option value="" selected disabled hidden>
+                <option value="" disabled hidden>
                     Choose hours
                 </option>
 
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value="10">10</option>
+                <option value="1"
+                ${subjectHours == "1" ? "selected" : ""}>
+                    1
+                </option>
+
+                <option value="2"
+                ${subjectHours == "2" ? "selected" : ""}>
+                    2
+                </option>
+
+                <option value="3"
+                ${subjectHours == "3" ? "selected" : ""}>
+                    3
+                </option>
+
+                <option value="4"
+                ${subjectHours == "4" ? "selected" : ""}>
+                    4
+                </option>
+
+                <option value="5"
+                ${subjectHours == "5" ? "selected" : ""}>
+                    5
+                </option>
+
+                <option value="6"
+                ${subjectHours == "6" ? "selected" : ""}>
+                    6
+                </option>
+
+                <option value="7"
+                ${subjectHours == "7" ? "selected" : ""}>
+                    7
+                </option>
+
+                <option value="8"
+                ${subjectHours == "8" ? "selected" : ""}>
+                    8
+                </option>
+
+                <option value="9"
+                ${subjectHours == "9" ? "selected" : ""}>
+                    9
+                </option>
+
+                <option value="10"
+                ${subjectHours == "10" ? "selected" : ""}>
+                    10
+                </option>
 
             </select>
         </div>
@@ -69,7 +115,10 @@ function subject(subjectName = "", counter = 1){
     `;
 }
 
-function addSubject(subjectName = ""){
+function addSubject(
+    subjectName = "",
+    subjectHours = ""
+){
 
     const subjectsContainer =
     document.querySelector('.subjects-container');
@@ -83,7 +132,7 @@ function addSubject(subjectName = ""){
     newSubject.classList.add('subject');
 
     newSubject.innerHTML =
-    subject(subjectName, counter);
+    subject(subjectName, subjectHours, counter);
 
     subjectsContainer.append(newSubject);
 }
@@ -152,22 +201,34 @@ function showResult(){
 
 function saveSubjects(){
 
-    const subjectsName =
-    document.querySelectorAll(
-        'input[name="subject-name"]'
-    );
+    const subjects =
+    document.querySelectorAll(".subject");
 
-    let subjects = [];
+    let subjectsData = [];
 
-    subjectsName.forEach(subject => {
+    subjects.forEach(subject => {
 
-        subjects.push(subject.value);
+        const subjectName =
+        subject.querySelector(
+            'input[name="subject-name"]'
+        ).value;
+
+        const subjectHours =
+        subject.querySelector(".hours").value;
+
+        subjectsData.push({
+
+            name: subjectName,
+
+            hours: subjectHours
+
+        });
 
     });
 
     localStorage.setItem(
         "subjects",
-        JSON.stringify(subjects)
+        JSON.stringify(subjectsData)
     );
 }
 
@@ -185,9 +246,12 @@ function loadSubjects(){
 
     subjectsContainer.innerHTML = "";
 
-    savedSubjects.forEach(subjectName => {
+    savedSubjects.forEach(subject => {
 
-        addSubject(subjectName);
+        addSubject(
+            subject.name,
+            subject.hours
+        );
 
     });
 }
