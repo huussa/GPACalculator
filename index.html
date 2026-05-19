@@ -1,80 +1,92 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="A simple GPA calculator to help students calculate their Grade Point Average based on their course grades and credit hours.">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/mdia.css">
-    <link rel="icon" href="images/GPACalculator.png" type="image/x-icon">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="A simple GPA calculator to help students calculate their Grade Point Average based on their course grades and credit hours."
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/mdia.css" />
+    <link rel="icon" href="images/GPACalculator.png" type="image/x-icon" />
     <title>GPA Calculator</title>
-    <style>
-    </style>
-</head>
-<body>
+    <style></style>
+  </head>
+  <body>
     <h1>GPA Calculator</h1>
     <div class="grading-system">
-        <h3>System of Grades</h3>
-        <input type="radio" id="gpa4" name="system" value="0" checked>
-        <label for="gpa4">Out of 4</label>
+      <h3>System of Grades</h3>
+      <input type="radio" id="gpa4" name="system" value="0" checked />
+      <label for="gpa4">Out of 4</label>
 
-        <input type="radio" id="gpa5" name="system" value="1">
-        <label for="gpa5">Out of 5</label>
+      <input type="radio" id="gpa5" name="system" value="1" />
+      <label for="gpa5">Out of 5</label>
     </div>
     <div class="subjects-container">
-        <div class="subject">
-            <p>subject <span class="number-of-subjects">1</span></p>
-            <div class="input-group">
-                <h3>subject name</h3>
-                <input type="text" name="subject-name" placeholder="Enter subject name">
-            </div>
-            <div class="input-group">
-                <h3>Hours</h3>
-                <select name="hours" class="hours" required>
-                    <option value="" selected disabled hidden>Choose hours</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
-                </select>
-            </div>
-            <div class="input-group">
-                <h3>Grade</h3>
-                <select name="grade" class="grade" required>
-                    <option value="" selected disabled hidden>Choose Grade</option>
-                    <option value="4.00">A+</option>
-                    <option value="3.75">A</option>
-                    <option value="3.50">B+</option>
-                    <option value="3.00">B</option>
-                    <option value="2.50">C+</option>
-                    <option value="2.00">C</option>
-                    <option value="1.50">D+</option>
-                    <option value="1.00">D</option>
-                    <option value="0.00">F</option>
-                </select>
-            </div>
+      <div class="subject">
+        <p>subject <span class="number-of-subjects">1</span></p>
+        <div class="input-group">
+          <h3>subject name</h3>
+          <input
+            type="text"
+            name="subject-name"
+            placeholder="Enter subject name"
+          />
         </div>
+        <div class="input-group">
+          <h3>Hours</h3>
+          <select name="hours" class="hours" required>
+            <option value="" selected disabled hidden>Choose hours</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+          </select>
+        </div>
+        <div class="input-group">
+          <h3>Grade</h3>
+          <select name="grade" class="grade" required>
+            <option value="" selected disabled hidden>Choose Grade</option>
+            <option value="4.00">A+</option>
+            <option value="3.75">A</option>
+            <option value="3.50">B+</option>
+            <option value="3.00">B</option>
+            <option value="2.50">C+</option>
+            <option value="2.00">C</option>
+            <option value="1.50">D+</option>
+            <option value="1.00">D</option>
+            <option value="0.00">F</option>
+          </select>
+        </div>
+      </div>
     </div>
     <div class="action-btns">
-        <button type="button" onclick="addSubject()" id="add-btn"><img src="images/plus96.png" alt="add icon"></button>
+      <button type="button" onclick="addSubject()" id="add-btn">
+        <img src="images/plus96.png" alt="add icon" />
+      </button>
 
-        <button type="button" id="show-btn" onclick="showResult()">Show Result</button>
+      <button type="button" id="show-btn" onclick="showResult()">
+        Show Result
+      </button>
 
-        <button type="button" id ="delete-btn" onclick="deleteSubject()"><img src="images/trash96.png" alt="delete icon"></button>
+      <button type="button" id="delete-btn" onclick="deleteSubject()">
+        <img src="images/trash96.png" alt="delete icon" />
+      </button>
     </div>
 
     <div class="result">
-        <p>GPA: <span id="gpa">0.00</span></p>
+      <p>GPA: <span id="gpa">0.00</span></p>
     </div>
     <footer>
-        <p>&copy; 2026 GPA Calculator. All rights reserved.</p>
+      <p>&copy; 2026 GPA Calculator. All rights reserved.</p>
     </footer>
     <script src="javascript/script.js"></script>
-</body>
+  </body>
 </html>

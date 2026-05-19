@@ -3,13 +3,8 @@ loadSubjects();
 document.addEventListener("input", saveSubjects);
 document.addEventListener("change", saveSubjects);
 
-function subject(
-    subjectName = "",
-    subjectHours = "",
-    counter = 1
-){
-
-    return `
+function subject(subjectName = "", subjectHours = "", counter = 1) {
+  return `
         <p>
             subject 
             <span class="number-of-subjects">${counter}</span>
@@ -115,143 +110,101 @@ function subject(
     `;
 }
 
-function addSubject(
-    subjectName = "",
-    subjectHours = ""
-){
+function addSubject(subjectName = "", subjectHours = "") {
+  const subjectsContainer = document.querySelector(".subjects-container");
 
-    const subjectsContainer =
-    document.querySelector('.subjects-container');
+  const newSubject = document.createElement("div");
 
-    const newSubject =
-    document.createElement('div');
+  const counter = document.querySelectorAll(".subject").length + 1;
 
-    const counter =
-    document.querySelectorAll('.subject').length + 1;
+  newSubject.classList.add("subject");
 
-    newSubject.classList.add('subject');
+  newSubject.innerHTML = subject(subjectName, subjectHours, counter);
 
-    newSubject.innerHTML =
-    subject(subjectName, subjectHours, counter);
-
-    subjectsContainer.append(newSubject);
+  subjectsContainer.append(newSubject);
 }
 
-function deleteSubject(){
+function deleteSubject() {
+  const subjects = document.querySelectorAll(".subject");
 
-    const subjects =
-    document.querySelectorAll(".subject");
-
-    if(subjects.length > 1){
-
-        subjects[subjects.length - 1].remove();
-
-        saveSubjects();
-    }
-}
-
-function showResult(){
-
-    let totalHours = 0;
-    let totalPoints = 0;
-    let gpa = 0;
-
-    const subjects =
-    document.querySelectorAll(".subject");
-
-    subjects.forEach(subject => {
-
-        const subjecthours =
-        subject.querySelector(".hours").value;
-
-        const subjectgrade =
-        subject.querySelector(".grade").value;
-
-        totalHours += parseFloat(subjecthours);
-
-        totalPoints +=
-        parseFloat(subjectgrade) *
-        parseFloat(subjecthours);
-    });
-
-    gpa = totalPoints / totalHours;
-
-    let system =
-    document.querySelector(
-        'input[name="system"]:checked'
-    ).value;
-
-    if (totalHours === 0 || isNaN(gpa)) {
-
-        document.getElementById("gpa").textContent =
-        "don't forget to add hours and grades";
-
-        return;
-    }
-
-    if(system == 1){
-        gpa += 1;
-    }
-
-    document.getElementById("gpa").textContent =
-    gpa.toFixed(2);
+  if (subjects.length > 1) {
+    subjects[subjects.length - 1].remove();
 
     saveSubjects();
+  }
 }
 
-function saveSubjects(){
+function showResult() {
+  let totalHours = 0;
+  let totalPoints = 0;
+  let gpa = 0;
 
-    const subjects =
-    document.querySelectorAll(".subject");
+  const subjects = document.querySelectorAll(".subject");
 
-    let subjectsData = [];
+  subjects.forEach((subject) => {
+    const subjecthours = subject.querySelector(".hours").value;
 
-    subjects.forEach(subject => {
+    const subjectgrade = subject.querySelector(".grade").value;
 
-        const subjectName =
-        subject.querySelector(
-            'input[name="subject-name"]'
-        ).value;
+    totalHours += parseFloat(subjecthours);
 
-        const subjectHours =
-        subject.querySelector(".hours").value;
+    totalPoints += parseFloat(subjectgrade) * parseFloat(subjecthours);
+  });
 
-        subjectsData.push({
+  gpa = totalPoints / totalHours;
 
-            name: subjectName,
+  let system = document.querySelector('input[name="system"]:checked').value;
 
-            hours: subjectHours
+  if (totalHours === 0 || isNaN(gpa)) {
+    document.getElementById("gpa").textContent =
+      "don't forget to add hours and grades";
 
-        });
+    return;
+  }
 
-    });
+  if (system == 1) {
+    gpa += 1;
+  }
 
-    localStorage.setItem(
-        "subjects",
-        JSON.stringify(subjectsData)
-    );
+  document.getElementById("gpa").textContent = gpa.toFixed(2);
+
+  saveSubjects();
 }
 
-function loadSubjects(){
+function saveSubjects() {
+  const subjects = document.querySelectorAll(".subject");
 
-    const savedSubjects =
-    JSON.parse(localStorage.getItem("subjects"));
+  let subjectsData = [];
 
-    if(!savedSubjects || savedSubjects.length === 0){
-        return;
-    }
+  subjects.forEach((subject) => {
+    const subjectName = subject.querySelector(
+      'input[name="subject-name"]',
+    ).value;
 
-    const subjectsContainer =
-    document.querySelector('.subjects-container');
+    const subjectHours = subject.querySelector(".hours").value;
 
-    subjectsContainer.innerHTML = "";
+    subjectsData.push({
+      name: subjectName,
 
-    savedSubjects.forEach(subject => {
-
-        addSubject(
-            subject.name,
-            subject.hours
-        );
-
+      hours: subjectHours,
     });
+  });
+
+  localStorage.setItem("subjects", JSON.stringify(subjectsData));
+}
+
+function loadSubjects() {
+  const savedSubjects = JSON.parse(localStorage.getItem("subjects"));
+
+  if (!savedSubjects || savedSubjects.length === 0) {
+    return;
+  }
+
+  const subjectsContainer = document.querySelector(".subjects-container");
+
+  subjectsContainer.innerHTML = "";
+
+  savedSubjects.forEach((subject) => {
+    addSubject(subject.name, subject.hours);
+  });
 }
