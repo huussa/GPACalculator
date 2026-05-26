@@ -16,12 +16,19 @@
   <body>
     <h1>GPA Calculator</h1>
     <div class="grading-system">
-      <h3>System of Grades</h3>
+      <h2>System of Grades</h2>
       <input type="radio" id="gpa4" name="system" value="0" checked />
       <label for="gpa4">Out of 4</label>
 
       <input type="radio" id="gpa5" name="system" value="1" />
       <label for="gpa5">Out of 5</label>
+    </div>
+    <div class="cgpa-container">
+      
+      <input type="checkbox" name="cgpa" id="cgpa">
+      <label for="cgpa">CGPA?</label>
+      <input type="text" name="currentCGPA" class="textbox" placeholder="enter your currernt CGPA">
+      <input type="text" name="totalHours" class="textbox" placeholder="enter total hours">
     </div>
     <div class="subjects-container">
       <div class="subject">
@@ -83,6 +90,8 @@
 
     <div class="result">
       <p>GPA: <span id="gpa">0.00</span></p>
+      <p>CGPA: <span id="gpa">0.00</span></p>
+      <!-- <p style="display: none;">CGPA: <span id="gpa">0.00</span></p> -->
     </div>
     <footer>
       <p>&copy; 2026 GPA Calculator. All rights reserved.</p>

@@ -1,3 +1,10 @@
+const cgpaBtn = document.querySelector('.cgpa-container input[name="cgpa"]');
+cgpaBtn.addEventListener("click", () => {
+  const textBox = document.querySelectorAll(".cgpa-container .textbox");
+  textBox.forEach((box) => {
+    box.classList.toggle("show");
+  });
+});
 loadSubjects();
 
 document.addEventListener("input", saveSubjects);

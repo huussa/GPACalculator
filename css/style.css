@@ -45,6 +45,52 @@ body {
   background-color: #007bff;
   color: white;
 }
+
+.cgpa-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  width: 100vw;
+}
+.cgpa-container label {
+  padding: 10px 20px;
+  border-radius: 5px;
+  background-color: #eee;
+  cursor: pointer;
+  margin: 5px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+.cgpa-container input[name="cgpa"] {
+  display: none;
+}
+.cgpa-container input[name="cgpa"]:checked + label {
+  background-color: #007bff;
+  color: white;
+}
+.cgpa-container .textbox {
+  width: 300px;
+  height: 30px;
+  border-radius: 10px;
+  text-align: center;
+  padding: 20px 0;
+  font-weight: bold;
+  font-size: 20px;
+  opacity: 0;
+  transform: translateX(100px);
+  visibility: hidden;
+
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease,
+    visibility 0.3s;
+}
+.cgpa-container .textbox.show {
+  opacity: 1;
+  transform: translateX(0);
+  visibility: visible;
+}
 .subjects-container {
   width: 80%;
 }
