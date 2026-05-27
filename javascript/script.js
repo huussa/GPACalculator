@@ -1,9 +1,12 @@
 const cgpaBtn = document.querySelector('.cgpa-container input[name="cgpa"]');
+const textBox = document.querySelectorAll(".cgpa-container .textbox");
+let isShown = false
 cgpaBtn.addEventListener("click", () => {
-  const textBox = document.querySelectorAll(".cgpa-container .textbox");
   textBox.forEach((box) => {
     box.classList.toggle("show");
+    isShown = box.classList.contains("show") ? true : false
   });
+  document.querySelector(".result .p-CGPA").style.display = isShown ? "inline" : "none"
 });
 loadSubjects();
 
@@ -163,7 +166,7 @@ function showResult() {
   let system = document.querySelector('input[name="system"]:checked').value;
 
   if (totalHours === 0 || isNaN(gpa)) {
-    document.getElementById("gpa").textContent =
+    document.querySelector(".result p #gpa").textContent =
       "don't forget to add hours and grades";
 
     return;
@@ -172,8 +175,23 @@ function showResult() {
   if (system == 1) {
     gpa += 1;
   }
+  if (isShown){
+    const cgpaResult = document.querySelector(".result p #cgpa")
+    document.querySelector(".result .p-CGPA").style.display = "inline"
+    const currentCGPA = Number(textBox[0].value)
+    const totalHoursCGPA = Number(textBox[1].value)
+    if (isNaN(currentCGPA) || isNaN(totalHoursCGPA)){
+      cgpaResult.textContent =
+      "don't forget to add total hours and your current CGPA";
+      return
+    }
+    let newCGPA = ((currentCGPA * totalHoursCGPA) + (gpa * totalHours)) / (totalHoursCGPA + totalHours)
+    cgpaResult.textContent = newCGPA.toFixed(2)
+  } else {
+    document.querySelector(".result .p-CGPA").style.display = "none"
+  }
 
-  document.getElementById("gpa").textContent = gpa.toFixed(2);
+  document.querySelector(".result p #gpa").textContent = gpa.toFixed(2);
 
   saveSubjects();
 }

@@ -5,7 +5,7 @@
 }
 html,
 body {
-  width: 100%;
+  width: 100vw;
   min-height: 100vh;
 }
 body {
@@ -211,6 +211,12 @@ option {
   font-size: 30px;
   font-weight: bold;
   margin-bottom: 30px;
+}
+.result p {
+  margin: 10px;
+}
+.result .p-CGPA {
+  display: none;
 }
 footer {
   text-align: center;
