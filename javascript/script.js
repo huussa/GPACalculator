@@ -175,24 +175,22 @@ function showResult() {
   if (system == 1) {
     gpa += 1;
   }
+  document.querySelector(".result p #gpa").textContent = gpa.toFixed(2);
+
   if (isShown){
     const cgpaResult = document.querySelector(".result p #cgpa")
-    document.querySelector(".result .p-CGPA").style.display = "inline"
     const currentCGPA = Number(textBox[0].value)
     const totalHoursCGPA = Number(textBox[1].value)
-    if (isNaN(currentCGPA) || isNaN(totalHoursCGPA)){
+    if (isNaN(currentCGPA) || isNaN(totalHoursCGPA) || currentCGPA === totalHoursCGPA){
       cgpaResult.textContent =
-      "don't forget to add total hours and your current CGPA";
+      "don't forget to add the 'number' of total hours and your current CGPA";
       return
     }
     let newCGPA = ((currentCGPA * totalHoursCGPA) + (gpa * totalHours)) / (totalHoursCGPA + totalHours)
     cgpaResult.textContent = newCGPA.toFixed(2)
-  } else {
-    document.querySelector(".result .p-CGPA").style.display = "none"
   }
 
-  document.querySelector(".result p #gpa").textContent = gpa.toFixed(2);
-
+  
   saveSubjects();
 }
 
