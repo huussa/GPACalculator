@@ -1,110 +1,93 @@
-/* Large Mobile - 425px */
-@media (max-width: 426px) {
+/* ========================= Small Mobile / Smaller screens ========================= */
+@media (max-width: 420px) {
+  .subject {
+    flex-direction: column;
+    align-items: center;
+  }
+
   .grading-system {
-    gap: 10px;
-    margin: 30px 0;
+    justify-content: center;
   }
-  .grading-system h3 {
-    font-size: 14px;
+}
+/* ========================= Large Mobile / Small screens ========================= */
+@media (max-width: 480px) {
+  body {
+    margin-top: 20px;
   }
+
+  .grading-system {
+    flex-direction: column;
+    gap: 8px;
+  }
+
   .grading-system label {
-    padding: 10px;
-    margin: 3px;
-  }
-}
-
-/* Medium Mobile - 375px */
-@media (max-width: 376px) {
-  .action-btns {
-    gap: 10px;
-    margin-bottom: 50px;
     width: 100%;
-    font-size: 15px;
+    text-align: center;
   }
-  #add-btn {
-    width: 20%;
-  }
-  #show-btn {
-    width: 60%;
-  }
-  #delete-btn {
-    width: 20%;
-  }
-  #add-btn img,
-  #delete-btn img {
-    width: 20px;
-    height: 20px;
-  }
-}
 
-/* Small Mobile - 320px */
-@media (max-width: 320px) {
-  .grading-system h3 {
-    font-size: 12px;
+  .cgpa-container {
+    flex-direction: column;
+    align-items: stretch;
   }
-  .grading-system label {
-    padding: 5px;
-    margin: 3px;
-    font-size: 12px;
-    font-weight: bold;
-  }
-}
 
-/* Tablet - 768px */
-@media (max-width: 769px) {
   .subject {
-    display: inline-block;
-    justify-content: space-around;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
   }
-  .action-btns {
-    gap: 10px;
-    margin-bottom: 50px;
-  }
-  #add-btn {
-    width: 10%;
-    padding: 0;
-  }
-  #show-btn {
-    width: 60%;
-  }
-  #delete-btn {
-    width: 10%;
-    padding: 0;
-  }
-  #add-btn img,
-  #delete-btn img {
-    width: 25px;
-    height: 25px;
-  }
-  .result {
-    padding: 20px;
-    width: 80%;
-    font-size: 20px;
-    font-weight: bold;
-  }
-}
 
-/* Laptop screen */
-@media (max-width: 1025px) {
-  .subjects-container {
-    width: 90%;
-  }
-  .subject {
-    padding: 20px;
-    margin: 10px 0;
-    width: 100%;
-    gap: 20px;
-  }
-  .subject p {
-    width: 80px;
-    font-size: 15px;
-  }
   .input-group input,
   .input-group select {
-    height: 40px;
-    font-size: 14px;
+    font-size: 16px;
+    height: 45px;
   }
-  .input-group {
-    padding: 10px;
+
+  .action-btns {
+    flex-direction: row;
+    width: 50%;
+  }
+
+  .action-btns button {
+    width: 100%;
+  }
+
+  .result {
+    width: 100%;
+    font-size: 18px;
+  }
+}
+
+/* ========================= Tablet ========================= */
+@media (max-width: 850px) {
+  .cgpa-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+  }
+
+  .cgpa-container label {
+    width: min(90%, 400px);
+    text-align: center;
+  }
+
+  .cgpa-container .textbox {
+    width: min(90%, 400px);
+  }
+}
+
+/* ========================= Small laptops ========================= */
+@media (max-width: 1024px) {
+  .subjects-container {
+    width: min(95%, 900px);
+  }
+
+  .subject {
+    gap: 15px;
+  }
+
+  .input-group input,
+  .input-group select {
+    font-size: 17px;
   }
 }
