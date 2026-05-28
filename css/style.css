@@ -3,33 +3,46 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+/* Base layout */
 html,
 body {
-  width: 100vw;
+  width: 100%;
   min-height: 100vh;
 }
+
 body {
   font-family: Arial, sans-serif;
   background-color: #f4f4f4;
   color: #333;
+
   margin-top: 30px;
+
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  padding: 0 16px;
 }
+
+/* Grading system */
 .grading-system {
   display: flex;
   align-items: center;
-  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  gap: 12px;
   margin: 30px 0;
 }
+
 .grading-system input[type="radio"] {
   display: none;
 }
 
 .grading-system label {
-  padding: 10px 20px;
-  border-radius: 5px;
+  padding: 10px 16px;
+  border-radius: 6px;
   background-color: #eee;
   cursor: pointer;
   margin: 5px;
@@ -46,100 +59,122 @@ body {
   color: white;
 }
 
+/* CGPA container */
 .cgpa-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 20px;
-  width: 100vw;
+  flex-wrap: wrap;
+
+  gap: 16px;
+
+  width: min(100%, 1000px);
 }
+
 .cgpa-container label {
-  padding: 10px 20px;
-  border-radius: 5px;
+  padding: 10px 16px;
+  border-radius: 6px;
   background-color: #eee;
   cursor: pointer;
   margin: 5px;
   font-weight: bold;
   transition: 0.3s;
 }
+
 .cgpa-container input[name="cgpa"] {
   display: none;
 }
+
 .cgpa-container input[name="cgpa"]:checked + label {
   background-color: #007bff;
   color: white;
 }
+
+/* Textbox animation */
 .cgpa-container .textbox {
-  width: 300px;
-  height: 30px;
+  width: min(300px, 90%);
+
   border-radius: 10px;
   text-align: center;
-  padding: 20px 0;
+
+  padding: 0;
+
   font-weight: bold;
   font-size: 20px;
+
   opacity: 0;
   transform: translateX(100px);
+
   visibility: hidden;
+
   transition:
     opacity 0.3s ease,
     transform 0.3s ease,
     visibility 0.3s;
 }
+
 .cgpa-container .textbox.show {
   opacity: 1;
   transform: translateX(0);
   visibility: visible;
 }
+
+/* Subjects */
 .subjects-container {
-  width: 80%;
+  width: min(90%, 1000px);
 }
+
 .subject {
   background-color: #fff;
   padding: 20px;
   margin: 20px 0;
-  border-radius: 5px;
+  border-radius: 8px;
+
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
   width: 100%;
+
   display: flex;
-  justify-content: space-around;
-  gap: 50px;
+  justify-content: space-between;
   align-items: center;
+
+  gap: 20px;
+  flex-wrap: wrap;
 }
+
 .subject p {
   font-size: 18px;
   font-weight: bold;
+  min-width: 100px;
 }
+
+/* Inputs */
 .input-group {
-  padding: 20px;
+  padding: 10px;
+  flex: 1;
+  min-width: 120px;
 }
+
 .input-group h3 {
   text-align: center;
 }
+
 .input-group input,
 .input-group select {
   width: 100%;
   height: 50px;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: bold;
 
   text-align: center;
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
 
-  text-align: center;
-  text-align-last: center;
+  appearance: none;
 
   padding: 10px;
   margin-top: 10px;
+
   border: 1px solid #ccc;
-  border-radius: 5px;
-}
-select,
-option {
-  color: black;
-  -webkit-text-fill-color: black;
-  -moz-text-fill-color: black;
+  border-radius: 6px;
 }
 
 .input-group input:focus,
@@ -147,86 +182,115 @@ option {
   border-color: #007bff;
   outline: none;
 }
+
+/* Buttons */
 .action-btns {
   display: flex;
   justify-content: center;
-  gap: 20px;
+  align-items: center;
+
+  flex-wrap: wrap;
+
+  gap: 12px;
+
   margin-top: 50px;
   margin-bottom: 100px;
-  width: 80%;
+
+  width: min(90%, 800px);
 }
+
 .action-btns button {
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
+  flex: 1;
+  min-width: 120px;
+
   height: 50px;
-  font-size: 20px;
+
+  border: none;
+  border-radius: 6px;
+
+  cursor: pointer;
+
+  font-size: 18px;
   font-weight: bold;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
 }
-#add-btn {
-  width: 10%;
-}
-#show-btn {
-  width: 60%;
-}
-#delete-btn {
-  width: 10%;
-}
+
+/* Button colors */
 #add-btn {
   background-color: #28a745;
   color: #fff;
 }
+
 #add-btn:hover {
   background-color: #218838;
 }
+
 #show-btn {
   background-color: #007bff;
   color: #fff;
 }
+
 #show-btn:hover {
   background-color: #0069d9;
 }
+
 #delete-btn {
   background-color: #dc3545;
   color: #fff;
 }
+
 #delete-btn:hover {
   background-color: #c82333;
 }
+
 #add-btn img,
 #delete-btn img {
-  width: 30px;
-  height: 30px;
+  width: 24px;
+  height: 24px;
 }
 
+/* Result */
 .result {
   background-color: #fff;
   padding: 20px;
-  border-radius: 5px;
+  border-radius: 8px;
+
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  width: 30%;
+
+  width: min(90%, 500px);
+
   text-align: center;
-  font-size: 30px;
+
+  font-size: clamp(18px, 2vw, 30px);
   font-weight: bold;
+
   margin-bottom: 30px;
 }
+
 .result p {
   margin: 10px;
 }
+
 .result .p-CGPA {
   display: none;
 }
+
+/* Footer */
 footer {
   text-align: center;
-  padding: 0;
+
   background-color: #007bff;
   color: #fff;
-  width: 100%;
+
+  min-width: 100vw;
 
   padding: 30px;
-  height: 20px;
+
   line-height: 20px;
 
-  margin-top: 300px;
+  margin-top: 200px;
 }
