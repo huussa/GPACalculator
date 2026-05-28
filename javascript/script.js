@@ -4,14 +4,14 @@ let isShown = false;
 cgpaBtn.addEventListener("click", () => {
   textBox.forEach((box) => {
     box.classList.toggle("show");
+    isShown = box.classList.contains("show") ? true : false;
   });
-  isShown = textBox[0].classList.contains("show") ? true : false;
   document.querySelector(".result .p-CGPA").style.display = isShown
     ? "inline"
     : "none";
 });
 loadSubjects();
-loadCGPA();
+
 document.addEventListener("input", saveSubjects);
 document.addEventListener("change", saveSubjects);
 
@@ -188,10 +188,6 @@ function showResult() {
       isNaN(totalHoursCGPA) ||
       currentCGPA === totalHoursCGPA
     ) {
-      if (currentCGPA > 4.0) {
-        cgpaResult.textContent = "add a correct CGPA value!";
-        return;
-      }
       cgpaResult.textContent =
         "don't forget to add the 'number' of total hours and your current CGPA";
       return;
@@ -223,9 +219,6 @@ function saveSubjects() {
       hours: subjectHours,
     });
   });
-  if (isShown) {
-    saveCGPA();
-  }
 
   localStorage.setItem("subjects", JSON.stringify(subjectsData));
 }
@@ -244,24 +237,4 @@ function loadSubjects() {
   savedSubjects.forEach((subject) => {
     addSubject(subject.name, subject.hours);
   });
-}
-function saveCGPA() {
-  
-  const currentCGPA = textBox[0].value;
-  const totalHoursCGPA = textBox[1].value;
-  let cgpaData = {
-    currentCGPA: currentCGPA,
-    totalHours: totalHoursCGPA
-  }
-
-  localStorage.setItem("cgpa", JSON.stringify(cgpaData));
-  return;
-}
-function loadCGPA() {
-  const savedCGPA = JSON.parse(localStorage.getItem("cgpa"));
-
-  if (!savedCGPA || savedCGPA.length === 0) return;
-
-  textBox[0].value = savedCGPA.currentCGPA // currentCGPA
-  textBox[1].value = savedCGPA.totalHours // totalHoursCGPA
 }
