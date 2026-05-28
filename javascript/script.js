@@ -174,7 +174,7 @@ function showResult() {
     return;
   }
 
-  if (system == 1) {
+  if (system == 5) {
     gpa += 1;
   }
   document.querySelector(".result p #gpa").textContent = gpa.toFixed(2);
@@ -183,17 +183,17 @@ function showResult() {
     const cgpaResult = document.querySelector(".result p #cgpa");
     const currentCGPA = Number(textBox[0].value);
     const totalHoursCGPA = Number(textBox[1].value);
-    if (
-      isNaN(currentCGPA) ||
-      isNaN(totalHoursCGPA) ||
-      currentCGPA === totalHoursCGPA
-    ) {
-      if (currentCGPA > 4.0) {
-        cgpaResult.textContent = "add a correct CGPA value!";
-        return;
-      }
-      cgpaResult.textContent =
-        "don't forget to add the 'number' of total hours and your current CGPA";
+
+    if (isNaN(currentCGPA) || isNaN(totalHoursCGPA)) {
+      cgpaResult.textContent = "don't forget to add valid CGPA and total hours";
+      return;
+    }
+    if (currentCGPA <= 0 || currentCGPA > system) {
+      cgpaResult.textContent = "add a correct CGPA value!";
+      return;
+    }
+    if (totalHoursCGPA <= 0) {
+      cgpaResult.textContent = "total hours must be greater than 0";
       return;
     }
     let newCGPA =
@@ -246,13 +246,12 @@ function loadSubjects() {
   });
 }
 function saveCGPA() {
-  
   const currentCGPA = textBox[0].value;
   const totalHoursCGPA = textBox[1].value;
   let cgpaData = {
     currentCGPA: currentCGPA,
-    totalHours: totalHoursCGPA
-  }
+    totalHours: totalHoursCGPA,
+  };
 
   localStorage.setItem("cgpa", JSON.stringify(cgpaData));
   return;
@@ -262,6 +261,6 @@ function loadCGPA() {
 
   if (!savedCGPA || savedCGPA.length === 0) return;
 
-  textBox[0].value = savedCGPA.currentCGPA // currentCGPA
-  textBox[1].value = savedCGPA.totalHours // totalHoursCGPA
+  textBox[0].value = savedCGPA.currentCGPA; // currentCGPA
+  textBox[1].value = savedCGPA.totalHours; // totalHoursCGPA
 }
